@@ -4,6 +4,35 @@
 
 This project aims to perform sentiment analysis and topic classification on Amazon Office Product reviews using natural language processing (NLP) techniques.
 
+## Dataset Overview
+
+We are using the Amazon Office Products 5-core dataset, which includes reviews for office products sold on Amazon.com.
+
+Key characteristics of the dataset:
+
+- Total number of reviews: 800,357
+- Time span: [You can add this based on the min and max of unixReviewTime]
+- Features include: overall rating, verified purchase status, review text, summary, and timestamps
+
+Dataset statistics:
+
+- Ratings distribution:
+  - Mean rating: 4.47 (out of 5)
+  - Median rating: 5.0
+- Review length:
+  - Mean: 241 characters
+  - Median: 108 characters
+  - Min: 1 character
+  - Max: 32,602 characters
+
+Notable columns:
+
+- 'overall': The product's rating (1 to 5)
+- 'verified': Boolean indicating if the review is from a verified purchase
+- 'reviewText': The text of the review
+- 'summary': A summary of the review
+- 'unixReviewTime': The time of the review in Unix time
+
 ## Progress Journal
 
 ### Wed Jun 26
