@@ -11,7 +11,7 @@ We are using the Amazon Office Products 5-core dataset, which includes reviews f
 Key characteristics of the dataset:
 
 - Total number of reviews: 800,357
-- Time span: [You can add this based on the min and max of unixReviewTime]
+- Time span: [TODO: add this based on the min and max of unixReviewTime]
 - Features include: overall rating, verified purchase status, review text, summary, and timestamps
 
 Dataset statistics:
