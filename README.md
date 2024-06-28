@@ -41,24 +41,32 @@ Notable columns:
 - Chose the Office Products dataset from Amazon reviews
 - Implemented initial data exploration script
 - Began preprocessing steps including text cleaning, tokenization, and feature engineering
+- Added dataset overview to project documentation
 
-### Next steps
+### Fri Jun 28
 
-- Complete data preprocessing
-- Implement feature extraction (e.g., TF-IDF)
-- Split data into training and testing sets
-- Begin model selection and training
+- Completed data preprocessing, including improved regex for text cleaning
+- Implemented TF-IDF feature extraction
+- Saved TF-IDF matrix, vectorizer, and feature names for future use
+
+### [Next steps]
+
+- Perform Exploratory Data Analysis (EDA) on TF-IDF features
+- Split data into training, validation, and test sets
+- Begin model selection and training for sentiment analysis and topic classification
 
 ## Project Structure
 
 ```
-project_folder/
+root/
 │
 ├── data/               # For storing datasets
+│   ├── Office_Products_5.json
+│   └── preprocessed_office_products.csv
 ├── src/                # Source code
 │   ├── __init__.py
 │   ├── data_preprocessing.py
-│   └── [future scripts]
+│   └── feature_extraction.py
 ├── notebooks/          # For Jupyter notebooks (if used)
 ├── requirements.txt    # Project dependencies
 └── README.md           # This file
