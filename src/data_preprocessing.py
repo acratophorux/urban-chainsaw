@@ -94,11 +94,16 @@ def main():
     df = load_data("../data/Office_Products_5.json")
     print("Data Loaded.")
 
+    print("Original reviews:")
+    print(df['reviewText'].head())
+
     print("Preprocessing the data...")
     df = preprocess_data(df)
     print("Done.")
 
-
+    print("\nCleaned reviews:")
+    print(df['cleaned_review'].head())
+    
     explore_data(df)
 
     print('Saving to csv...')
