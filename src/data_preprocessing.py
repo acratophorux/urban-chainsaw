@@ -56,26 +56,32 @@ def preprocess_data(df):
 
     df['cleaned_review'] = df['reviewText'].fillna('').apply(preprocess_text)
     df['cleaned_summary'] = df['summary'].fillna('').apply(preprocess_text)
+    df['review_length'] = df['reviewText'].fillna('').str.len()
     return df
 
-def explore_dataset(df):
-    print(df.head())
-
-    print(df.describe())
-    print(df.info())
+def explore_data(df):
+    """Perform data exploration of preprocessed data"""
+    print("Dataset shape:", df.shape)
+    print("\nColumn names:", df.columns.tolist())
+    print("\nSample preprocessed reviews:")
+    print(df['cleaned_review'].head())
+    print("\nDistribution of ratings:")
+    print(df['overall'].value_counts().sort_index())
+    print("\nReview length statistics:")
+    print(df['review_length'].describe())
 
 def main():
     root_dir = os.path.dirname(os.path.dirname(__file__))
     print(root_dir)
     print("Loading data from json file...")
     df = load_data_from_json(os.path.join(root_dir, 'data/Luxury_Beauty_5.json'))
-    explore_dataset(df)
+    # explore_data(df)
 
 
     print("Processing data...")
     print("----------------------------------------------")
     df = preprocess_data(df)
-    explore_dataset(df)
+    explore_data(df)
 
     print("Saving to csv file...")
     df.to_csv(os.path.join(root_dir, 'data/processed/processed_luxury_beauty_5.csv'))
