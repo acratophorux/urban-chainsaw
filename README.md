@@ -2,36 +2,61 @@
 
 ## Project Overview
 
-This project aims to perform sentiment analysis and topic classification on Amazon Office Product reviews using natural language processing (NLP) techniques.
+This project aims to perform sentiment analysis and topic classification on Amazon Luxury Beauty Products' reviews using natural language processing (NLP) techniques.
 
 ## Dataset Overview
 
-We are using the Amazon Office Products 5-core dataset, which includes reviews for office products sold on Amazon.com.
+We are using the Amazon Luxury Beauty Products 5-core dataset, which includes reviews for luxury beauty products sold on Amazon.com.
 
 Key characteristics of the dataset:
 
-- Total number of reviews: 800,357
-- Time span: [TODO: add this based on the min and max of unixReviewTime]
-- Features include: overall rating, verified purchase status, review text, summary, and timestamps
+- Total number of reviews: 34278
+- Features include: overall rating, verified purchase status, review text, summary, and timestamps. Of these, only rating, review text, and summary features are used in this project.
 
 Dataset statistics:
 
 - Ratings distribution:
-  - Mean rating: 4.47 (out of 5)
-  - Median rating: 5.0
+  - Mean rating: 4.28616 (out of 5)
 - Review length:
-  - Mean: 241 characters
-  - Median: 108 characters
-  - Min: 1 character
-  - Max: 32,602 characters
+  - Mean: 488 characters
+  - Min: 0 character
+  - Max: 16,970 characters
 
-Notable columns:
+Here is an overview of dataset:
 
-- 'overall': The product's rating (1 to 5)
-- 'verified': Boolean indicating if the review is from a verified purchase
-- 'reviewText': The text of the review
-- 'summary': A summary of the review
-- 'unixReviewTime': The time of the review in Unix time
+```
+Dataset shape: (34278, 6)
+
+Column names: ['overall', 'reviewText', 'summary', 'cleaned_review', 'cleaned_summary', 'review_length']
+
+Sample preprocessed reviews:
+0    handcream beauti fragranc doesnt stay protect ...
+1    wonder hand lotion serious dri skin stay long ...
+2    best hand cream around silki thick soak way le...
+3                                                thank
+4    great hand lotion soak right leav skin super s...
+Name: cleaned_review, dtype: object
+
+Distribution of ratings:
+overall
+1     1095
+2     1496
+3     3884
+4     7833
+5    19970
+Name: count, dtype: int64
+
+Review length statistics:
+count    34278.000000
+mean       488.958516
+std        605.822360
+min          0.000000
+25%        116.000000
+50%        321.000000
+75%        672.000000
+max      16970.000000
+Name: review_length, dtype: float64
+```
 
 ## Progress Journal
 
@@ -49,11 +74,16 @@ Notable columns:
 - Implemented TF-IDF feature extraction
 - Saved TF-IDF matrix, vectorizer, and feature names for future use
 
-### [Next steps]
+### Tue Jul 16
 
-- Perform Exploratory Data Analysis (EDA) on TF-IDF features
-- Split data into training, validation, and test sets
-- Begin model selection and training for sentiment analysis and topic classification
+- Switched dataset from Office Products to Luxury Beauty Products due to the large size of Office Products dataset and limited compute resources
+- Caught upto dataset loading, preprocessing, and eda
+
+### Next Steps
+
+- Feature extraction
+- Modeling
+- Evaluation and error analysis
 
 ## Project Structure
 
@@ -61,13 +91,15 @@ Notable columns:
 root/
 │
 ├── data/               # For storing datasets
-│   ├── Office_Products_5.json
-│   └── preprocessed_office_products.csv
+│   ├── Luxury_Beauty_5.json
+|   ├── figures/
+|   └── processed/
+│       └── processed_luxury_beauty_5.csv
 ├── src/                # Source code
 │   ├── __init__.py
 │   ├── data_preprocessing.py
 │   └── feature_extraction.py
-├── notebooks/          # For Jupyter notebooks (if used)
+├── notebooks/          # For Jupyter notebooks (not used)
 ├── requirements.txt    # Project dependencies
 └── README.md           # This file
 ```
