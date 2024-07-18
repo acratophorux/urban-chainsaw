@@ -36,11 +36,11 @@ def create_sentiment_labels(df):
     """
     def to_sentiment(rating):
         if rating <= 2:
-            return 0  # Negative
+            return 'Negative'
         elif rating == 3:
-            return 1  # Neutral
+            return 'Neutral'
         else:
-            return 2  # Positive
+            return 'Positive'
 
     df['sentiment'] = df['overall'].apply(to_sentiment)
     return df
@@ -48,14 +48,18 @@ def create_sentiment_labels(df):
 def model(X_train, y_train, X_test, y_test, le):
 
     # Initialize and train the model
-    model = LogisticRegression(random_state=42, max_iter=1000)
+    model = LogisticRegression(random_state=42, max_iter=2000)
     model.fit(X_train, y_train)
 
     # Make predictions
     y_pred = model.predict(X_test)
 
+    # Convert numeric predictions back to string labels
+    y_pred_labels = le.inverse_transform(y_pred)
+    y_test_labels = le.inverse_transform(y_test)
+
     # Evaluate the model
-    print(classification_report(y_test, y_pred, target_names=le.classes_))
+    print(classification_report(y_test_labels, y_pred_labels))
 
 def main():
 
@@ -71,22 +75,19 @@ def main():
 
     # Encode labels
     le = LabelEncoder()
-    y = le.fit_transform(y)
+    y_encoded = le.fit_transform(y)
 
     # Split the data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
     print("Training set shape:", X_train.shape)
     print("Testing set shape:", X_test.shape)
-    print("Number of classes:", len(np.unique(y)))
+    print("Number of classes:", len(np.unique(y_encoded)))
 
     # train a simple logistic regression model
     print("Training logistic regression model...")
     model(X_train, y_train, X_test, y_test, le)
     print("Done.")
-
-
-
 
 if __name__ == "__main__":
     main()
