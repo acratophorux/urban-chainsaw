@@ -118,13 +118,23 @@ Name: review_length, dtype: float64
 - Conducted topic modeling using Latent Dirichlet Allocation (LDA), identifying 5 distinct topics
 - Examined term frequency distribution across different rating levels
 - Attempted initial n-gram analysis
+- Implemented and evaluated a logistic regression model for sentiment classification
+- Added a detailed performance analysis of the logistic regression model
 
 Key findings:
 
-1. Most frequent terms include "color", "product", "use", "love", and "skin", aligning well with beauty product reviews
-2. LDA revealed topics related to skincare, fragrances, nail care, and general hair/skin products
-3. Observed clear differences in term usage across different ratings
-4. Identified potential areas for improvement in n-gram analysis
+- Most frequent terms include "color", "product", "use", "love", and "skin", aligning well with beauty product reviews
+- LDA revealed topics related to skincare, fragrances, nail care, and general hair/skin products
+- Observed clear differences in term usage across different ratings
+- Identified potential areas for improvement in n-gram analysis
+- The logistic regression model achieved 86% accuracy, with high performance on positive reviews but struggles with negative and neutral sentiments
+
+### Next Steps
+
+- Further modeling and algorithm experimentation
+- Address class imbalance in the dataset
+- Conduct hyperparameter tuning
+- Perform detailed error analysis
 
 ## Project Structure
 
