@@ -58,6 +58,38 @@ max      16970.000000
 Name: review_length, dtype: float64
 ```
 
+# Logistic Regression Model Performance Analysis
+
+## Model Details
+
+- Algorithm: Logistic Regression
+- Training set shape: (27422, 5000)
+- Testing set shape: (6856, 5000)
+- Number of classes: 3
+
+## Performance Metrics
+
+|              | Precision | Recall | F1-Score | Support |
+| ------------ | --------- | ------ | -------- | ------- |
+| Negative     | 0.77      | 0.38   | 0.51     | 513     |
+| Neutral      | 0.59      | 0.27   | 0.38     | 745     |
+| Positive     | 0.88      | 0.98   | 0.93     | 5598    |
+| Accuracy     |           |        | 0.86     | 6856    |
+| Macro Avg    | 0.75      | 0.54   | 0.60     | 6856    |
+| Weighted Avg | 0.84      | 0.86   | 0.84     | 6856    |
+
+## Analysis
+
+1. **Overall Performance**: The model achieves an accuracy of 86%, which is good. However, there's room for improvement, especially in handling negative and neutral sentiments.
+
+2. **Class Imbalance**: There's a significant class imbalance in the dataset. Positive reviews (5598) far outnumber negative (513) and neutral (745) reviews.
+
+3. **Positive Sentiment**: The model performs exceptionally well on positive reviews (F1-score: 0.93, Recall: 0.98). This is likely due to the abundance of positive samples in the dataset.
+
+4. **Negative and Neutral Sentiments**: The model struggles with negative and neutral reviews, particularly in terms of recall (0.38 and 0.27 respectively). This means it's missing a lot of negative and neutral reviews.
+
+5. **Precision vs Recall**: For negative and neutral classes, precision is significantly higher than recall. This suggests the model is cautious about labeling reviews as negative or neutral, but when it does, it's often correct.
+
 ## Progress Journal
 
 ### Wed Jun 26
@@ -94,26 +126,28 @@ Key findings:
 3. Observed clear differences in term usage across different ratings
 4. Identified potential areas for improvement in n-gram analysis
 
-### Next Steps
-
-- Modeling
-- Evaluation and error analysis
-
 ## Project Structure
 
 ```
 root/
 │
-├── data/               # For storing datasets
+├── data/
 │   ├── Luxury_Beauty_5.json
 |   ├── figures/
-|   └── processed/
-│       └── processed_luxury_beauty_5.csv
+|   ├── processed/
+│   │    └── processed_luxury_beauty_5.csv
+|   └── tfidf/
+│       ├── feature_names.npy
+│       ├── tfidf_matrix.npz
+│       └── tfidf_vectorizer.joblib
+├── notebooks/          # For Jupyter notebooks (not used)
 ├── src/                # Source code
 │   ├── __init__.py
+│   ├── app.py
 │   ├── data_preprocessing.py
+│   ├── eda.py
 │   └── feature_extraction.py
-├── notebooks/          # For Jupyter notebooks (not used)
+│   └── model.py
 ├── requirements.txt    # Project dependencies
 └── README.md           # This file
 ```
