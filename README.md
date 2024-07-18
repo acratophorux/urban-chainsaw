@@ -79,9 +79,23 @@ Name: review_length, dtype: float64
 - Switched dataset from Office Products to Luxury Beauty Products due to the large size of Office Products dataset and limited compute resources
 - Caught upto dataset loading, preprocessing, and eda
 
+### Thu Jul 18
+
+- Performed initial Exploratory Data Analysis (EDA) on the preprocessed Luxury Beauty dataset
+- Analyzed most frequent terms in the reviews
+- Conducted topic modeling using Latent Dirichlet Allocation (LDA), identifying 5 distinct topics
+- Examined term frequency distribution across different rating levels
+- Attempted initial n-gram analysis
+
+Key findings:
+
+1. Most frequent terms include "color", "product", "use", "love", and "skin", aligning well with beauty product reviews
+2. LDA revealed topics related to skincare, fragrances, nail care, and general hair/skin products
+3. Observed clear differences in term usage across different ratings
+4. Identified potential areas for improvement in n-gram analysis
+
 ### Next Steps
 
-- Feature extraction
 - Modeling
 - Evaluation and error analysis
 
