@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
-
+from joblib import dump
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_DIR = os.path.dirname(SCRIPT_DIR)
     
@@ -45,8 +45,8 @@ def create_sentiment_labels(df):
     df['sentiment'] = df['overall'].apply(to_sentiment)
     return df
 
-def model(X_train, y_train, X_test, y_test, le):
-
+def LogisticRegModel(X_train, y_train, X_test, y_test, le):
+    """Train and save a Logistic Regression model"""
     # Initialize and train the model
     model = LogisticRegression(random_state=42, max_iter=2000)
     model.fit(X_train, y_train)
@@ -60,6 +60,13 @@ def model(X_train, y_train, X_test, y_test, le):
 
     # Evaluate the model
     print(classification_report(y_test_labels, y_pred_labels))
+
+    dump(model, os.path.join(PROJECT_DIR, 'savedModels/logistic_reg.joblib'))
+
+
+def RandomForestModel(X_train, y_train, X_test, y_test, le):
+    pass
+    
 
 def main():
 
@@ -86,7 +93,7 @@ def main():
 
     # train a simple logistic regression model
     print("Training logistic regression model...")
-    model(X_train, y_train, X_test, y_test, le)
+    LogisticRegModel(X_train, y_train, X_test, y_test, le)
     print("Done.")
 
 if __name__ == "__main__":
