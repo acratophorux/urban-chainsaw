@@ -161,27 +161,3 @@ root/
 ├── requirements.txt    # Project dependencies
 └── README.md           # This file
 ```
-
-## Setup and Installation
-
-[Include instructions on how to set up the project environment]
-
-## Usage
-
-[Include instructions on how to run your scripts]
-
-## Results and Findings
-
-[To be updated as the project progresses]
-
-## Future Improvements
-
-[To be updated as the project progresses]
-
-## References
-
-- [List any references or resources used]
-
-```
-
-```
